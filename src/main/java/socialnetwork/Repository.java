@@ -2,6 +2,6 @@ package socialnetwork;
 
 public interface Repository<T> {
 	public void add(T item);
-	public voiremove(T item);
-	public T delete();	
+	public void remove(T item);
+	public void delete();	
 }
