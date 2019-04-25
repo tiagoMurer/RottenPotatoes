@@ -22,7 +22,9 @@ public class Profile {
         this.timeline = new Timeline(this); //ta certo isso?
     }
 
-    public void addFriend(){
+    public void addFriend(String id){
+    	
+    	
     }
 
     public void removeFriend(){
