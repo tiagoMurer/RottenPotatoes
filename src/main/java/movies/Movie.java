@@ -19,14 +19,6 @@ public class Movie {
         setDirector(director);
         setSinopse(sinopse);
     }
-
-
-
-
-
-
-
-
     //GETTERS AND SETTERS
 
     /**
