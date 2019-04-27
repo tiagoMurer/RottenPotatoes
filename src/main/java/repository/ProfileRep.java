@@ -3,16 +3,34 @@ package repository;
 import socialnetwork.Profile;
 
 public class ProfileRep implements Repository{
-    
-    public findById(String id) {
-    	for(Profile profile : ProfileRepository) {
-    		if(profile.id == id) {
+
+
+
+    ProfileRep(){ }
+
+    public Profile findById(String id) {
+    	for(Profile profile : ProfileRep) {
+    		if(profile.getId() == id) {
     			return profile;
     		}
     	}
-    	
-    	System.out.println("Usu�rio n�o encontrado");
-    	return false;
+    }
+
+    public boolean isInRep(String id){
+        for(Profile profile: ProfileRep) {
+            if(profile.getId() == id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void add(Profile profile){
+
+    }
+
+    public void remove(String id){
+
     }
 
 }
