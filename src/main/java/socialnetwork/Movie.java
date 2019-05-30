@@ -1,8 +1,7 @@
-package movies;
+package socialnetwork;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import socialnetwork.*;
 
 public class Movie {
     //VARI�VEIS

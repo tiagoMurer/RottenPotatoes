@@ -1,13 +1,12 @@
 package socialnetwork;
 
 import repository.FriendList;
-import repository.ProfileRep
+import repository.ProfileRep;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-package socialnetwork;
 
 public class Profile {
     private String id;
