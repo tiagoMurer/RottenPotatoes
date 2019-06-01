@@ -1,12 +1,12 @@
 package socialnetwork;
 
-import java.util.Collection;
+import java.util.LinkedList;
 
 public class Timeline {
 
     private Profile owner; // de quem a timeline é
 
-    public Collection<Publication>{} //fila de publicações
+    public LinkedList<Publication> publication_queue = new LinkedList<Publication>();//fila de publicações
 
     Timeline(Profile owner){
         this.owner = owner;

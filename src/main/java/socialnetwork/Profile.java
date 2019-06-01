@@ -6,21 +6,25 @@ import repository.ProfileRep;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 
 
 public class Profile {
+    private final Movie movie;
     private String id;
     private String name;
     private Date birthday;
     private int age; //tirar idade de birthday
     private Timeline timeline;
     private FriendList friends = new FriendList();
+    private HashSet<Movie> favoriteMovies;
 
     Profile(String name, Date birthday){
         this.name = name;
         this.birthday = birthday;
         //this.age = ???hoje - birthday???
         this.timeline = new Timeline(this); //ta certo isso?
+        this.favoriteMovies = new HashSet<Movie>();
     }
 
     public void addFriend(String id){
@@ -29,6 +33,10 @@ public class Profile {
         }
         friends.add(id);
 
+    }
+
+    public void addMovie(Movie movie){
+        favoriteMovies.add(movie);
     }
 
     public void removeFriend(){
