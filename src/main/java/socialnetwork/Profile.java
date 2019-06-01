@@ -3,35 +3,31 @@ package socialnetwork;
 import repository.FriendList;
 import repository.ProfileRep;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
 
 public class Profile {
-    private final Movie movie;
     private String id;
+    private String pswd;
     private String name;
     private Date birthday;
     private int age; //tirar idade de birthday
     private Timeline timeline;
-    private FriendList friends = new FriendList();
+    private FriendList friends;
     private HashSet<Movie> favoriteMovies;
 
-    Profile(String name, Date birthday){
+    Profile(Movie movie, String name, Date birthday, String pswd){
         this.name = name;
         this.birthday = birthday;
         //this.age = ???hoje - birthday???
         this.timeline = new Timeline(this); //ta certo isso?
         this.favoriteMovies = new HashSet<Movie>();
+        this.pswd = pswd;
+        friends = new FriendList(this);
     }
 
-    public void addFriend(String id){
-        if (friends.isInRep(id) == true) {
-            friends.add(ProfileRep.findById(id));
-        }
-        friends.add(id);
+    public void add(String id){
 
     }
 

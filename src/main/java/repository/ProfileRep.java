@@ -16,7 +16,7 @@ public class ProfileRep implements Repository{
     			return profile;
     		}
     	}
-    	return null;
+    	System.out.println("Usuário não encontrado");
     }
 
     public boolean isInRep(String id){
