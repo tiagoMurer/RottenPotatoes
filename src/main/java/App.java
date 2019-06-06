@@ -1,8 +1,8 @@
-import DataBase.DataBase;
+import DataBase.Database;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        DataBase db = new DataBase();
+        Database db = new Database();
 
         db.connectDb();
     }
