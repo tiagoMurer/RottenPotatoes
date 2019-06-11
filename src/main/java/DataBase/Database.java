@@ -15,7 +15,18 @@ public class Database {
 		} catch(Exception e){
 			System.out.println(e);
 		}
-
-
 	}
+
+	public void disconnctDb() throws Exception{
+		if(connection != null){
+			try {
+				connection.close();
+				System.out.println("DataBase Desconectado!");
+				
+			}	catch(SQLException exc) {
+				System.out.println(exc);
+			}
+		}
+	}
+	
 }

@@ -5,5 +5,6 @@ public class App {
         Database db = new Database();
 
         db.connectDb();
+        db.disconnctDb();
     }
 }
