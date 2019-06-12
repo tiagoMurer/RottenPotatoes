@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class Database {
 
-	Connection connection = null;
+	public static Connection connection = null;
 
 	public void connectDb() throws Exception{
 

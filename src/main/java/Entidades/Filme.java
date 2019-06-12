@@ -10,17 +10,15 @@ public class Filme {
     private int ano;
     private String genero;
     private String diretor;
-    private String sinopse;
     private int numeroFans;
     //private HashSet<Usuario> fans;
 
     //CONSTRUCTOR
-    public Filme(String nome, int ano, String genero, String diretor, String sinopse){
-        this.nome = nome;
+    public Filme(String nome, int ano, String genero, String diretor){
+    	this.nome = nome;
         this.ano = ano;
         this.genero = genero;
         this.diretor = diretor;
-        this.sinopse = sinopse;
         this.numeroFans = 0;
        // this.fans = new HashSet();
     }
@@ -62,14 +60,6 @@ public class Filme {
         this.diretor = diretor;
     }
 
-    public String getSinopse() {
-        return sinopse;
-    }
-
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
-    }
-
     public int getNumeroFans() {
         return numeroFans;
     }
@@ -77,4 +67,9 @@ public class Filme {
     public void setNumeroFans(int numeroFans) {
         this.numeroFans = numeroFans;
     }
+	@Override
+	public String toString() {
+		return "Filme [Nome: " + nome + ", Ano: " + ano + ", Gênero: " + genero + ", Diretor: " + diretor + ", Favoritos: "
+				+ numeroFans;
+	}
 }
