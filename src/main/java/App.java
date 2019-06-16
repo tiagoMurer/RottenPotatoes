@@ -6,8 +6,10 @@ public class App {
     public static void main(String[] args) throws Exception {
         Database db = new Database();
         db.connectDb();
-        FilmeRep rep = new FilmeRep();
-        System.out.println(rep.loadFilmeRep());
+        UsuarioRep repUser = new UsuarioRep();
+        FilmeRep repFilme = new FilmeRep();
+        System.out.println(repUser.loadUserRep());
+        System.out.println(repFilme.loadFilmeRep());
         
 
         
