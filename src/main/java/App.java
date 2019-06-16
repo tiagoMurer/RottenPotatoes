@@ -8,6 +8,8 @@ public class App {
         db.connectDb();
         UsuarioRep repUser = new UsuarioRep();
         FilmeRep repFilme = new FilmeRep();
+        
+        System.out.println(repUser.getUserById(1));
         System.out.println(repUser.loadUserRep());
         System.out.println(repFilme.loadFilmeRep());
         
