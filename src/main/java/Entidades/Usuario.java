@@ -1,29 +1,16 @@
 package Entidades;
 
 public class Usuario {
-    private int id;
     private String email;
     private String pswd;
     private int idPerfil;
 
 
-    public Usuario(int id, String email, String pswd, int idPerfil){
-    	this.id = id;
+    public Usuario(String email, String pswd, int idPerfil){
     	this.email = email;
         this.pswd = pswd;
         this.idPerfil = idPerfil;
     }
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 
 	public String getEmail() {
 		return email;
@@ -57,7 +44,32 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id: " + id + ", email: " + email + ", idPerfil: " + idPerfil + "]";
+		return "Usuario [email: " + email + ", idPerfil: " + idPerfil + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		return true;
 	}
 	
 	

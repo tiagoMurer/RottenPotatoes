@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 
 import Entidades.Filme;
 
-public class FilmeRep implements Repository {
+public class FilmeRep implements Repository<Object> {
 	
 	Connection connection = Database.connection;
 	
@@ -37,6 +37,7 @@ public class FilmeRep implements Repository {
 			stmt.setInt(5, filme.getNumeroFans());
 			stmt.setString(6, filme.getGenero());
 			stmt.execute();
+			loadFilmeRep().put(x, filme);
 			System.out.println("Adicionado na base de dados!");
 			
 		}	catch(SQLException e) {
@@ -53,13 +54,12 @@ public class FilmeRep implements Repository {
 		
 		for(Map.Entry<Integer, Filme> entry : filmes.entrySet()){
 			if(entry.getValue().equals(filme)){
-				int id = entry.getKey();
-				filmes.remove(entry.getKey());
-				
+				int id = entry.getKey();				
 				try {
 					PreparedStatement stmt = connection.prepareStatement(delete);
 					stmt.setString(1, "" + id);
 					stmt.execute();
+					filmes.remove(entry.getKey());
 					System.out.println("Deletado com sucesso");
 					
 				}	catch(SQLException e) {
@@ -92,33 +92,15 @@ public class FilmeRep implements Repository {
 			consulta.close();
 			return filmes;
 		}	catch(SQLException e) {
-			System.out.println("Exception Em Filmerep Load " + e);
+			System.out.println("Exception Em FilmerepLoad " + e);
 			return null;
 		}
 	}
 
 	public Filme getFilmesById(int id) {
-		Filme filme = null;
-		try {
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM filmes WHERE id_filme = " + id);
-			ResultSet consulta = stmt.executeQuery();
+		HashMap<Integer, Filme> filmes = new HashMap<>();
+		filmes = loadFilmeRep();
 		
-			String nome = consulta.getString("nome_filme");
-			int ano = consulta.getInt("ano_filme");
-			String genero = consulta.getString("genero");
-			String diretor = consulta.getString("diretor");
-			int numeroFans = consulta.getInt("numero_favoritos");
-			
-			
-			filme = new Filme(nome, ano, genero, diretor);
-			filme.setNumeroFans(numeroFans);
-			
-			return filme;
-		} catch(SQLException e) {
-			System.out.println("ID de filme não encontrado! "+e);
-			
-			return null;
-		}
-		
+		return filmes.get(id);
 	}
 }
