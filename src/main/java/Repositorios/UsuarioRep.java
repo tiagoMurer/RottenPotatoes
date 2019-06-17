@@ -32,6 +32,7 @@ public class UsuarioRep implements Repository<Object>{
 			stmt.setString(3, usuario.getPswd());
 			stmt.setInt(4, usuario.getIdPerfil());
 			stmt.execute();
+			usuario.setIdPerfil(x);
 			loadUserRep().put(x, usuario);
 			
 		}	catch(SQLException e) {
@@ -78,7 +79,7 @@ public class UsuarioRep implements Repository<Object>{
 				String senha = consulta.getString("senha");
 				int idPefil = consulta.getInt("id_perfil");
 				
-				usuario = new Usuario(email, senha, idPefil);
+				usuario = new Usuario(email, senha, id);
 				usuarios.put(id, usuario);
 			}
 			consulta.close();

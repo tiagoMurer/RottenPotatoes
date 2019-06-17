@@ -8,18 +8,10 @@ public class App {
         db.connectDb();
         UsuarioRep repUser = new UsuarioRep();
         FilmeRep repFilme = new FilmeRep();
-        
-        
-        System.out.println("Login: ");
-        System.out.println(repUser.validarLogin("user1@gmail.com", "user1pass"));
-        System.out.println("FOI");
-        
-        Usuario user = new Usuario("emailteste@gmail.com", "SenhaTeste", 0);
-        repUser.remove(user);
-        System.out.println(repUser.getUserById(1));
+
         System.out.println(repUser.loadUserRep());
         System.out.println(repFilme.loadFilmeRep());
-        
+        // ADICIONAR REPOSITÓRIO DE PERFIL, E COLOCAR PRA QUANDO DELETER USUARIO DELETAR PERFIL
 
         
         db.disconnctDb();
