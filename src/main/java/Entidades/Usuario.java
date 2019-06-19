@@ -40,11 +40,24 @@ public class Usuario {
 	public void setIdPerfil(int idPerfil) {
 		this.idPerfil = idPerfil;
 	}
-
+	
+	//newThing recebe a string que é pra ser mudada 
+	//whatIsNew recebe a string que indica o que deve ser mudado
+	public void update(String newThing, String whatIsNew) {
+		switch(whatIsNew) {
+		case "email" :
+			setEmail(newThing);
+		break;
+		case "senha" :
+			setPswd(newThing);
+		break;
+		}
+		
+	}
 
 	@Override
 	public String toString() {
-		return "Usuario [email: " + email + ", idPerfil: " + idPerfil + "]";
+		return "Usuario [email: " + email + "]" + pswd;
 	}
 
 	@Override

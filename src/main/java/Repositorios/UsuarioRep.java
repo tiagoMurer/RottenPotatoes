@@ -30,10 +30,11 @@ public class UsuarioRep implements Repository<Object>{
 			stmt.setInt(1, x);
 			stmt.setString(2, usuario.getEmail());
 			stmt.setString(3, usuario.getPswd());
-			stmt.setInt(4, usuario.getIdPerfil());
+			stmt.setInt(4, x);
 			stmt.execute();
 			usuario.setIdPerfil(x);
 			loadUserRep().put(x, usuario);
+			System.out.println("Atualizado");
 			
 		}	catch(SQLException e) {
 			System.out.println("Exceção em addUsuario" + e);
@@ -54,11 +55,37 @@ public class UsuarioRep implements Repository<Object>{
 					stmt.setInt(1, entry.getKey());
 					stmt.execute();
 					usuarios.remove(entry.getKey());
+					usuarios.put(entry.getKey(), usuario);
 					System.out.println("Deletado");
 		
 				}	catch(SQLException e) {
 					System.out.println("Exceção em removeUser " +e);
 				}	
+			}
+		}
+		
+	}
+
+	//newThing recebe a string que é pra ser mudada 
+	//whatIsNew recebe a string que indica o que deve ser mudado
+	//Faz o update de qualquer string
+	public void updateSomethingString(Object item, String newThing, String whatIsNew) {
+		
+		HashMap<Integer, Usuario> usuarios = loadUserRep();
+		Usuario usuario = (Usuario)item;
+		String update = "UPDATE usuario set "+ whatIsNew +" = ? where id_user =?";
+			
+		for(Map.Entry<Integer, Usuario> entry : usuarios.entrySet()){
+			if(usuario.equals(entry.getValue())) {
+				try {
+					PreparedStatement stmt = connection.prepareStatement(update);
+					stmt.setString(1, newThing);
+					stmt.setInt(2, entry.getKey());
+					stmt.execute();
+					usuario.update(newThing, whatIsNew);
+				}	catch (SQLException e) {
+					
+				}
 			}
 		}
 		

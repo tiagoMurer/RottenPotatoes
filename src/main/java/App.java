@@ -11,6 +11,9 @@ public class App {
 
         System.out.println(repUser.loadUserRep());
         System.out.println(repFilme.loadFilmeRep());
+        Usuario usuario = repUser.loadUserRep().get(1);
+        System.out.println(usuario);
+        System.out.println(repUser.loadUserRep());
         // ADICIONAR REPOSITÓRIO DE PERFIL, E COLOCAR PRA QUANDO DELETER USUARIO DELETAR PERFIL
 
         
