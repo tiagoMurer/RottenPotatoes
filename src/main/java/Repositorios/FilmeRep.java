@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 
 
 import Entidades.Filme;
+import Entidades.Usuario;
 
 public class FilmeRep implements Repository<Object> {
 	
@@ -69,6 +70,7 @@ public class FilmeRep implements Repository<Object> {
 			}
 		}
 	}
+	
 	
 	public HashMap<Integer, Filme> loadFilmeRep() {
 		HashMap<Integer, Filme> filmes = new HashMap<>();

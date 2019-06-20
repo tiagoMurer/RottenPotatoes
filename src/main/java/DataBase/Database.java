@@ -2,10 +2,16 @@ package DataBase;
 
 import java.sql.*;
 
+import Repositorios.*;
+
 public class Database {
 
 	public static Connection connection = null;
-
+	
+	public FilmeRep filmeRep = null;
+	public UsuarioRep usuarioRep = null;
+	public PerfilRep perfilRep = null;
+	
 	public void connectDb() throws Exception{
 
 		try{
@@ -27,6 +33,15 @@ public class Database {
 				System.out.println(exc);
 			}
 		}
+	}
+	
+	public static Database runDb() throws Exception {
+		Database db = new Database();
+		db.connectDb();
+		db.filmeRep = new FilmeRep();
+		db.usuarioRep = new UsuarioRep();
+		db.perfilRep = new PerfilRep();
+		return db;
 	}
 	
 }

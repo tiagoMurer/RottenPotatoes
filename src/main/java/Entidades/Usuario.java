@@ -4,6 +4,7 @@ public class Usuario {
     private String email;
     private String pswd;
     private int idPerfil;
+    private Perfil perfil;
 
 
     public Usuario(String email, String pswd, int idPerfil){
@@ -83,6 +84,14 @@ public class Usuario {
 		} else if (!email.equals(other.email))
 			return false;
 		return true;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 	
 	

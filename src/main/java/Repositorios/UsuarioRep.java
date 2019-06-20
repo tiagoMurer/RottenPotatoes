@@ -88,7 +88,6 @@ public class UsuarioRep implements Repository<Object>{
 				}
 			}
 		}
-		
 	}
 	
 	public HashMap<Integer, Usuario> loadUserRep() {

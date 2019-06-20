@@ -67,6 +67,7 @@ public class Filme {
     public void setNumeroFans(int numeroFans) {
         this.numeroFans = numeroFans;
     }
+    
 	@Override
 	public String toString() {
 		return "Filme [Nome: " + nome + ", Ano: " + ano + ", Gênero: " + genero + ", Diretor: " + diretor + ", Favoritos: "

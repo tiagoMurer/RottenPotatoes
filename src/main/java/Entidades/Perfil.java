@@ -6,17 +6,14 @@ import java.util.HashMap;
 
 public class Perfil {
     private String id;
-    private String email;
-    private String pswd;
     private String name;
     private int age; //tirar idade de birthday
     private HashMap<Integer, Perfil> contatos;
     private HashMap<Integer, Filme> filmesFavoritos;
 
-    Perfil(String name, Date birthday, String pswd){
+    Perfil(String name, Date birthday){
         this.name = name;
         this.filmesFavoritos = new HashMap<Integer, Filme>();
-        this.pswd = pswd;
         this.contatos = new HashMap<Integer, Perfil>();
     }
 
@@ -56,22 +53,6 @@ public class Perfil {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPswd() {
-        return pswd;
-    }
-
-    public void setPswd(String pswd) {
-        this.pswd = pswd;
     }
 
     public String getName() {
