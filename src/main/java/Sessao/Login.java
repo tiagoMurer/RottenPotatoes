@@ -28,5 +28,5 @@ public class Login {
         assert inputid != null : "fx:id=\"inputemail\" was not injected: check your FXML file 'Untitled'.";
         assert inputpswd != null : "fx:id=\"inputpswd\" was not injected: check your FXML file 'Untitled'.";
         assert loginbtn != null : "fx:id=\"loginbtn\" was not injected: check your FXML file 'Untitled'.";
-
-    }
+    	}  
+}
