@@ -2,6 +2,8 @@ package Entidades;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 
 public class Perfil {
@@ -23,8 +25,11 @@ public class Perfil {
         //database.update (implementar)
     }
     public void removerContato(Perfil contato){
-    	//TODO
-    	//database.update (implementar)
+    	for(Entry<Integer, Perfil> entry : this.contatos.entrySet()){
+    		if(entry.getValue().equals(contato)){
+    			this.contatos.remove(entry.getKey());
+    		}
+    	}
     }
 
     public void favoritarFilme(Filme filme){

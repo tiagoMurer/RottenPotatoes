@@ -36,12 +36,17 @@ public class Database {
 	}
 	
 	public static Database runDb() throws Exception {
-		Database db = new Database();
-		db.connectDb();
-		db.filmeRep = new FilmeRep();
-		db.usuarioRep = new UsuarioRep();
-		db.perfilRep = new PerfilRep();
-		return db;
+		try {
+			Database db = new Database();
+			db.connectDb();
+			db.filmeRep = new FilmeRep();
+			db.usuarioRep = new UsuarioRep();
+			db.perfilRep = new PerfilRep();
+			return db;
+		}	catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 }
