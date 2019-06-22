@@ -9,6 +9,7 @@ import java.util.Map;
 
 import DataBase.Database;
 import Entidades.Usuario;
+import Rotten.App;
 
 public class UsuarioRep implements Repository<Object>{
 	Connection connection = Database.connection;
@@ -119,14 +120,13 @@ public class UsuarioRep implements Repository<Object>{
 	
 	public Usuario validarLogin(String email, String pass) {
 		
-		HashMap<Integer, Usuario> usuarios = new HashMap<>();
-		usuarios = loadUserRep();
+		HashMap<Integer, Usuario> usuarios = App.db.usuarioRep.loadUserRep();
+
 		
 		try {
-			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM usuario WHERE email = ? ");
+			PreparedStatement stmt = connection.prepareStatement("SELECT * FROM usuario WHERE email = ?");
 			stmt.setString(1, "" +  email);
 			ResultSet consulta = stmt.executeQuery();
-			
 			if(usuarios.get(consulta.getInt("id_user")).getPswd().equals(pass)){
 				return usuarios.get(consulta.getInt("id_user"));
 			}

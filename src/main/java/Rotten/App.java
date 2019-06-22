@@ -22,8 +22,8 @@ public class App extends Application{
 				Parent root = FXMLLoader.load(getClass().getResource("/Sessao/Login.fxml"));
 				
 				Scene scene = new Scene(root);
-				
 				primaryStage.setScene(scene);
+				setStage(primaryStage);
 				primaryStage.show();
 			} catch(Exception e) {
 				e.printStackTrace();

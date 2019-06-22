@@ -1,5 +1,7 @@
 package Entidades;
 
+import Rotten.App;
+
 public class Usuario {
     private String email;
     private String pswd;
@@ -11,6 +13,7 @@ public class Usuario {
     	this.email = email;
         this.pswd = pswd;
         this.idPerfil = idPerfil;
+        this.perfil = App.db.perfilRep.getPerfilById(idPerfil);
     }
 
 	public String getEmail() {

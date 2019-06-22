@@ -7,14 +7,15 @@ import java.util.Map.Entry;
 
 
 public class Perfil {
-    private String id;
+    private int id;
     private String name;
     private int age; //tirar idade de birthday
     private HashMap<Integer, Perfil> contatos;
     private HashMap<Integer, Filme> filmesFavoritos;
 
-    Perfil(String name, Date birthday){
-        this.name = name;
+    public Perfil(String name, String sobrenome, int id){
+        this.name = name + " " + sobrenome ;
+        this.id = id;
         this.filmesFavoritos = new HashMap<Integer, Filme>();
         this.contatos = new HashMap<Integer, Perfil>();
     }
@@ -52,11 +53,11 @@ public class Perfil {
     //getters+setters
 
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

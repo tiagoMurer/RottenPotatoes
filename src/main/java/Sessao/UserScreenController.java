@@ -1,59 +1,72 @@
 package Sessao;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import Entidades.Usuario;
+import Rotten.App;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import com.jfoenix.controls.JFXButton;
 
-
-public class UserScreenController {
+public class UserScreenController implements Initializable {
     @FXML
     private AnchorPane profilePane;
 
     @FXML
-    private Text userName;
+    private Text userName = null;
 
     @FXML
-    private Button btProfile;
+    private JFXButton btProfile;
 
     @FXML
-    private Button btAmigos;
+    private JFXButton btAmigos;
 
     @FXML
-    private Button btFavoritos;
+    private JFXButton btFavoritos;
 
     @FXML
-    private Button btBuscar;
+    private JFXButton btBuscar;
 
     @FXML
-    private Button btSair;
+    private JFXButton btSair;
 
     @FXML
     private AnchorPane contentPane;
 	
-	private Usuario user = null;
+	private static Usuario user = null;
 	
-	public Scene buildUserScreen(Usuario user) throws IOException {
-		this.user = user;
-		Parent root = FXMLLoader.load(getClass().getResource("/Session/UserScreen.fxml"));
-		
-		
-		
-		return null;
-		
+	public void buildUserScreen(Usuario user1) throws IOException {
+		user = user1;
+		Parent root = FXMLLoader.load(getClass().getResource("/Sessao/UserScreen.fxml"));
+		Scene scene = new Scene(root);
+		App.changeScene(scene);
 	}
 	
 	public void irParaPerfil() {
 		
 	}
 
-	public void sair() {
+	public void sair() throws IOException {
+		this.user = null;
+		Parent root = FXMLLoader.load(getClass().getResource("/Sessao/Login.fxml"));
+		App.changeScene(new Scene(root));
+	}
+
+	public void initialize(Usuario user) {
+		
+		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		userName.setText(user.getPerfil().getName());
 		
 	}
 	

@@ -7,6 +7,7 @@ import DataBase.Database;
 import Entidades.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import Rotten.App;
 public class Login {
@@ -21,7 +22,7 @@ public class Login {
     private TextField inputid;
 
     @FXML
-    private TextField inputpswd;
+    private PasswordField inputpswd;
 
     @FXML
     private Button loginbtn;
@@ -39,7 +40,8 @@ public class Login {
     	//App.db.usuarioRep.validarLogin();
     	Usuario user =  App.db.usuarioRep.validarLogin(id, pass);
     	if(user != null) {
-    		//TODO CHAMAR TELA DO USUARIO
+    		UserScreenController uc = new UserScreenController();
+    		uc.buildUserScreen(user);
     	}
     }
 }
