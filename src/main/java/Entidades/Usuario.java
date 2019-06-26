@@ -14,6 +14,7 @@ public class Usuario {
         this.pswd = pswd;
         this.idPerfil = idPerfil;
         this.perfil = App.db.perfilRep.getPerfilById(idPerfil);
+      
     }
 
 	public String getEmail() {
@@ -43,6 +44,7 @@ public class Usuario {
 
 	public void setIdPerfil(int idPerfil) {
 		this.idPerfil = idPerfil;
+		 this.perfil = App.db.perfilRep.getPerfilById(idPerfil);
 	}
 	
 	//newThing recebe a string que é pra ser mudada 

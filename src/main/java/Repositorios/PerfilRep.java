@@ -10,8 +10,37 @@ import DataBase.Database;
 import Entidades.Perfil;
 import Entidades.Usuario;
 
-public class PerfilRep {
+public class PerfilRep implements Repository {
 	Connection connection = Database.connection;
+	
+	
+	@Override
+	public void add(Object item) {
+		Perfil perfil = (Perfil)item;
+		String insert = "INSERT INTO perfil VALUES(?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement stmt = connection.prepareStatement(insert);
+			stmt.setInt(1, perfil.getId_perfil());
+			stmt.setString(2, perfil.getName());
+			stmt.setString(3, perfil.getSobrenome());
+			stmt.setInt(4, perfil.getIdUser());
+			stmt.execute();
+			
+			loadPerfilRep().put(perfil.getId_perfil(), perfil);
+			System.out.println("perfil Salvo");		
+			
+		}	catch(SQLException exc) {
+			exc.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void remove(Object item) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	public HashMap<Integer, Perfil> loadPerfilRep() {
 		HashMap<Integer, Perfil> perfis = new HashMap<>();
@@ -39,11 +68,14 @@ public class PerfilRep {
 		}
 	}
 	
+	
+	
 	public Perfil getPerfilById(int id) {
 		HashMap<Integer, Perfil> perfis = new HashMap<>();
 		perfis = loadPerfilRep();
 		
 		return perfis.get(id);
 	}
-	
+
+
 }

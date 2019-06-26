@@ -35,7 +35,7 @@ public class UsuarioRep implements Repository<Object>{
 			stmt.execute();
 			usuario.setIdPerfil(x);
 			loadUserRep().put(x, usuario);
-			System.out.println("Atualizado");
+			System.out.println("Salvo");
 			
 		}	catch(SQLException e) {
 			System.out.println("Exceção em addUsuario" + e);
