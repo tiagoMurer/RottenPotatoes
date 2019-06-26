@@ -28,7 +28,7 @@ public class PerfilRep implements Repository {
 			stmt.execute();
 			
 			loadPerfilRep().put(perfil.getId_perfil(), perfil);
-			System.out.println("perfil Salvo");		
+		
 			
 		}	catch(SQLException exc) {
 			exc.printStackTrace();
@@ -38,7 +38,19 @@ public class PerfilRep implements Repository {
 
 	@Override
 	public void remove(Object item) {
-		// TODO Auto-generated method stub
+		Perfil perfil = (Perfil)item;
+		String delete = "DELETE FROM perfil where id_prof = ?";
+		HashMap<Integer, Perfil> perfis = loadPerfilRep();
+		
+		try {
+			PreparedStatement stmt = connection.prepareStatement(delete);
+			stmt.setInt(1, perfil.getId_perfil());
+			stmt.execute();
+			perfis.remove(perfil.getId_perfil());
+			
+		}	catch(SQLException exc) {
+			exc.printStackTrace();
+		}
 		
 	}
 	

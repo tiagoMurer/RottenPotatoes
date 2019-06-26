@@ -25,70 +25,52 @@ public class UserScreenController implements Initializable {
     
     @FXML
     private Text userName = null;
-
     @FXML
     private JFXButton btProfile;
-
     @FXML
     private JFXButton btAmigos;
-
     @FXML
     private JFXButton btFavoritos;
-
     @FXML
     private JFXButton btBuscar;
-
     @FXML
     private JFXButton btSair;
-
     @FXML
     private AnchorPane contentPane;
-
     @FXML
     private Text welcome;
-   // INICIO PANE DE PERFIL
+   
+    // INICIO PANE DE PERFIL
     @FXML
     private AnchorPane perfilPane;
-
     @FXML
     private Text perfilUserName;
-
     @FXML
     private JFXTextField inNome;
-
     @FXML
     private JFXButton btNome;
-
     @FXML
     private Text perfilSobrenome;
-
     @FXML
     private JFXTextField inSobrenome;
-
     @FXML
     private JFXButton btSobrenome;
-    
-
     @FXML
     private Text warning;
-
     @FXML
     private Text perfilEmail;
-
     @FXML
     private JFXTextField inEmail;
-
     @FXML
     private JFXButton btEmail;
-
     @FXML
     private JFXPasswordField inOldPass;
-
     @FXML
     private JFXPasswordField inNewPass;
-
     @FXML
     private JFXButton btMudarSenha;
+    @FXML
+    private JFXButton btExcluir;
     // FIM PANE DE PERFIL
 
 	private AnchorPane ativo; 
@@ -139,6 +121,10 @@ public class UserScreenController implements Initializable {
 		
 	}
 	
+	public void updatePerfil() {
+		
+	}
+	
 	public void updateUser(ActionEvent event){
 		JFXButton b = (JFXButton)event.getSource();
 		switch(b.getId()) {
@@ -169,6 +155,19 @@ public class UserScreenController implements Initializable {
 				warning.setText("Preencha todos os campos");
 			}
 		break;
+		}
+	}
+	
+	public void excluirConta(ActionEvent event) throws IOException {
+		if(!warning.getText().equals("Tem certeza?")) {
+			warning.setText("Tem certeza?");
+			btExcluir.setText("Sim!");
+		}
+		else if(warning.getText().equals("Tem certeza?")){
+			warning.setText("Mas tudo que passamos juntos?");
+			btExcluir.setText("Pai tá online");
+			App.db.usuarioRep.remove(user);
+			sair();
 		}
 	}
 	

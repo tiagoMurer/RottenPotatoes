@@ -35,7 +35,6 @@ public class UsuarioRep implements Repository<Object>{
 			stmt.execute();
 			usuario.setIdPerfil(x);
 			loadUserRep().put(x, usuario);
-			System.out.println("Salvo");
 			
 		}	catch(SQLException e) {
 			System.out.println("Exceção em addUsuario" + e);
@@ -55,9 +54,8 @@ public class UsuarioRep implements Repository<Object>{
 					PreparedStatement stmt = connection.prepareStatement(delete);
 					stmt.setInt(1, entry.getKey());
 					stmt.execute();
+					App.db.perfilRep.remove((usuario.getPerfil()));
 					usuarios.remove(entry.getKey());
-					usuarios.put(entry.getKey(), usuario);
-					System.out.println("Deletado");
 		
 				}	catch(SQLException e) {
 					System.out.println("Exceção em removeUser " +e);

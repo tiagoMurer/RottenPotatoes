@@ -126,6 +126,11 @@
                   <Font name="BigNoodleTitling Oblique" size="40.0" />
                </font>
             </Text>
+            <JFXButton fx:id="btExcluir" layoutX="706.0" layoutY="642.0" onAction="#excluirConta" prefHeight="55.0" prefWidth="146.0" text="excluir conta" textFill="WHITE">
+               <font>
+                  <Font name="BigNoodleTitling" size="20.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="amigosPane" layoutX="409.0" prefHeight="720.0" prefWidth="871.0" visible="false" />
