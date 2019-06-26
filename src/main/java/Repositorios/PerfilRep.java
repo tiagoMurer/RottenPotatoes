@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 
 import DataBase.Database;
 import Entidades.Perfil;
@@ -48,6 +49,23 @@ public class PerfilRep implements Repository {
 			stmt.execute();
 			perfis.remove(perfil.getId_perfil());
 			
+		}	catch(SQLException exc) {
+			exc.printStackTrace();
+		}
+		
+	}
+	
+	public void updateSomethingString(Object item, String newThing, String whatIsNew) {
+		Perfil perfil = (Perfil)item;
+		String update = "UPDATE perfil SET "+  whatIsNew + " = ? WHERE id_prof =?";
+		HashMap<Integer, Perfil> perfis = loadPerfilRep();
+		
+		try {
+			PreparedStatement stmt = connection.prepareStatement(update);
+			stmt.setString(1, newThing);
+			stmt.setInt(2, perfil.getId_perfil());
+			stmt.execute();
+			perfil.update(newThing, whatIsNew);
 		}	catch(SQLException exc) {
 			exc.printStackTrace();
 		}

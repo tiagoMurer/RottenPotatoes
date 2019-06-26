@@ -111,18 +111,36 @@ public class UserScreenController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/Sessao/Login.fxml"));
 		App.changeScene(new Scene(root));
 	}
-
-	public void atualizarDados() {
-		
-	}
 	
 	public void initialize(Usuario user) {
 		
 		
 	}
 	
-	public void updatePerfil() {
+	public void atualizarDados(ActionEvent event) {
+		JFXButton b = (JFXButton)event.getSource();
 		
+		switch(b.getId()) {
+		case "btNome" :
+			if(!inNome.getText().isBlank() && !inNome.getText().isEmpty()) {
+				App.db.perfilRep.updateSomethingString(user.getPerfil(), inNome.getText(), "nome");
+				atualizarPerfilPane();
+				warning.setText("Atualizado");
+			}
+			else
+				warning.setText("Nome vazio");
+		break;
+		
+		case "btSobrenome":
+			if(!inSobrenome.getText().isBlank() && !inSobrenome.getText().isEmpty()) {
+				App.db.perfilRep.updateSomethingString(user.getPerfil(), inSobrenome.getText(), "sobrenome");
+				atualizarPerfilPane();
+				warning.setText("Atualizado");
+			}
+			else
+				warning.setText("Sobrenome vazio");
+		break;
+		}
 	}
 	
 	public void updateUser(ActionEvent event){

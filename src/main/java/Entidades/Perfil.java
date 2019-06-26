@@ -53,9 +53,17 @@ public class Perfil {
         //database.update (implementar)
     }
 
-
-
-
+    
+	public void update(String newThing, String whatIsNew) {
+		switch(whatIsNew) {
+		case "nome" :
+			setName(newThing);
+		break;
+		case "sobrenome" :
+			setSobrenome(newThing);
+		break;
+		}	
+	}
     //getters+setters
 
 

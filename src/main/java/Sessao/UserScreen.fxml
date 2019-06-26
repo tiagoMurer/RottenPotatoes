@@ -76,7 +76,7 @@
                   <Font name="BigNoodleTitling Oblique" size="40.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="inNome" layoutX="235.0" layoutY="65.0" prefHeight="43.0" prefWidth="402.0" />
+            <JFXTextField fx:id="inNome" focusColor="#050517" layoutX="235.0" layoutY="65.0" prefHeight="43.0" prefWidth="402.0" unFocusColor="WHITE" />
             <JFXButton fx:id="btNome" layoutX="380.0" layoutY="114.0" onAction="#atualizarDados" prefHeight="43.0" prefWidth="98.0" text="Atualizar" textFill="WHITE">
                <font>
                   <Font name="BigNoodleTitling" size="20.0" />
@@ -87,7 +87,7 @@
                   <Font name="BigNoodleTitling Oblique" size="40.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="inSobrenome" layoutX="228.0" layoutY="216.0" prefHeight="43.0" prefWidth="402.0" />
+            <JFXTextField fx:id="inSobrenome" focusColor="#050517" layoutX="228.0" layoutY="216.0" prefHeight="43.0" prefWidth="402.0" unFocusColor="WHITE" />
             <JFXButton fx:id="btSobrenome" layoutX="380.0" layoutY="267.0" onAction="#atualizarDados" prefHeight="43.0" prefWidth="98.0" text="Atualizar" textFill="WHITE">
                <font>
                   <Font name="BigNoodleTitling" size="20.0" />
@@ -98,14 +98,14 @@
                   <Font name="BigNoodleTitling Oblique" size="40.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="inEmail" layoutX="228.0" layoutY="392.0" prefHeight="43.0" prefWidth="402.0" />
+            <JFXTextField fx:id="inEmail" focusColor="#050517" layoutX="228.0" layoutY="392.0" prefHeight="43.0" prefWidth="402.0" unFocusColor="WHITE" />
             <JFXButton fx:id="btEmail" layoutX="380.0" layoutY="448.0" onAction="#updateUser" prefHeight="43.0" prefWidth="98.0" text="Atualizar" textFill="WHITE">
                <font>
                   <Font name="BigNoodleTitling" size="20.0" />
                </font>
             </JFXButton>
-            <JFXPasswordField fx:id="inOldPass" layoutX="180.0" layoutY="617.0" prefHeight="25.0" prefWidth="200.0" />
-            <JFXPasswordField fx:id="inNewPass" layoutX="478.0" layoutY="609.0" prefHeight="32.0" prefWidth="200.0" />
+            <JFXPasswordField fx:id="inOldPass" focusColor="#050517" layoutX="180.0" layoutY="617.0" prefHeight="25.0" prefWidth="200.0" unFocusColor="WHITE" />
+            <JFXPasswordField fx:id="inNewPass" focusColor="#050517" layoutX="478.0" layoutY="609.0" prefHeight="32.0" prefWidth="200.0" unFocusColor="WHITE" />
             <Text fill="WHITE" layoutX="79.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senha atual" textAlignment="CENTER" wrappingWidth="401.87999725341797">
                <font>
                   <Font name="BigNoodleTitling Oblique" size="40.0" />
