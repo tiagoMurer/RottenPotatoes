@@ -99,7 +99,7 @@
                </font>
             </Text>
             <JFXTextField fx:id="inEmail" layoutX="228.0" layoutY="392.0" prefHeight="43.0" prefWidth="402.0" />
-            <JFXButton fx:id="btEmail" layoutX="380.0" layoutY="448.0" onAction="#atualizarDados" prefHeight="43.0" prefWidth="98.0" text="Atualizar" textFill="WHITE">
+            <JFXButton fx:id="btEmail" layoutX="380.0" layoutY="448.0" onAction="#updateUser" prefHeight="43.0" prefWidth="98.0" text="Atualizar" textFill="WHITE">
                <font>
                   <Font name="BigNoodleTitling" size="20.0" />
                </font>
@@ -116,11 +116,16 @@
                   <Font name="BigNoodleTitling Oblique" size="40.0" />
                </font>
             </Text>
-            <JFXButton fx:id="btMudarSenha" layoutX="380.0" layoutY="586.0" onAction="#atualizarDados" prefHeight="43.0" prefWidth="98.0" text="Mudar" textFill="WHITE">
+            <JFXButton fx:id="btMudarSenha" layoutX="380.0" layoutY="586.0" onAction="#updateUser" prefHeight="43.0" prefWidth="98.0" text="Mudar" textFill="WHITE">
                <font>
                   <Font name="BigNoodleTitling" size="20.0" />
                </font>
             </JFXButton>
+            <Text fx:id="warning" fill="WHITE" layoutX="-6.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="871.0">
+               <font>
+                  <Font name="BigNoodleTitling Oblique" size="40.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="amigosPane" layoutX="409.0" prefHeight="720.0" prefWidth="871.0" visible="false" />

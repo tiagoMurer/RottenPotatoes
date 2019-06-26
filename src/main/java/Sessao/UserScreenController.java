@@ -67,6 +67,10 @@ public class UserScreenController implements Initializable {
 
     @FXML
     private JFXButton btSobrenome;
+    
+
+    @FXML
+    private Text warning;
 
     @FXML
     private Text perfilEmail;
@@ -134,6 +138,40 @@ public class UserScreenController implements Initializable {
 		
 		
 	}
+	
+	public void updateUser(ActionEvent event){
+		JFXButton b = (JFXButton)event.getSource();
+		switch(b.getId()) {
+		case "btEmail":
+			if(!inEmail.getText().isEmpty() && !inEmail.getText().isBlank()) {
+				App.db.usuarioRep.updateSomethingString(user, inEmail.getText(), "email");
+				atualizarPerfilPane();
+				warning.setText("Atualizado");
+			}
+			else {
+				warning.setText("Digite algo");
+			}
+			
+		break;
+		case "btMudarSenha":
+			if(!inOldPass.getText().isBlank() && !inOldPass.getText().isEmpty()
+					&& !inNewPass.getText().isEmpty() && !inNewPass.getText().isBlank()) {
+				
+				if(inOldPass.getText().equals(user.getPswd())){
+					App.db.usuarioRep.updateSomethingString(user, inNewPass.getText(), "senha");
+					warning.setText("Senha alterada");
+				}
+				else {
+					warning.setText("Senha antiga errada");
+				}
+			}
+			else {
+				warning.setText("Preencha todos os campos");
+			}
+		break;
+		}
+	}
+	
 	public void atualizarPerfilPane() {
 		ativo.setVisible(false);
 		ativo = perfilPane;
@@ -141,6 +179,7 @@ public class UserScreenController implements Initializable {
 		perfilUserName.setText(user.getPerfil().getName());
 		perfilSobrenome.setText(user.getPerfil().getSobrenome());
 		perfilEmail.setText(user.getEmail());
+		this.userName.setText(""+user.getPerfil().getName()+" "+user.getPerfil().getSobrenome());
 		
 	}
 	
