@@ -14,6 +14,7 @@ public class FilmesFav implements Repository<Object>{
 	
 	Connection connection = Database.connection;
 
+
 	public void add(Object item, int i) {
 		String insert = "INSERT INTO usuario_filmes VALUES (?, ?)";
 		Filme filme = (Filme)item;
@@ -33,7 +34,6 @@ public class FilmesFav implements Repository<Object>{
 		// TODO Auto-generated method stub
 		
 	}
-
 	public LinkedHashSet<Filme> loadFilmesFav(int idUser){
 		String select = "SELECT * FROM usuario_filmes WHERE id_user = ?";
 		LinkedHashSet<Filme> favoritos = new LinkedHashSet<Filme>();

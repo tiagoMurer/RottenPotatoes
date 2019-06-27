@@ -226,7 +226,6 @@ public class UserScreenController implements Initializable {
 		ativo.setVisible(false);
 		ativo = filmesPane;
 		ativo.setVisible(true);
-		int contFilme = 0;
 		if(user.getPerfil().getFilmesFavoritos().size() > 0) {
 			i = user.getPerfil().getFilmesFavoritos().iterator();
 			if(i.hasNext()) {
@@ -236,15 +235,19 @@ public class UserScreenController implements Initializable {
 				f1.setText(filme.getNome());
 				if(i.hasNext()) {
 					Filme filme2 = (Filme)i.next();
-					Image img2 = new Image(img(filme2));
-					img1.setImage(img2);
-					f1.setText(filme.getNome());
+					Image img1 = new Image(img(filme2));
+					img2.setImage(img1);
+					f2.setText(filme2.getNome());
 				}
 			}
 		}
 		else {
 			msg.setText("Você ainda não tem nenhum");
 		}
+	}
+	
+	public void nextFav() {
+		
 	}
 	
 	public String img(Filme filme) {
