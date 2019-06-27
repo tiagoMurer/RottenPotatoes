@@ -2,7 +2,10 @@ package Sessao;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -94,6 +97,9 @@ public class UserScreenController implements Initializable {
     
     //Busca Pane
     @FXML
+    private AnchorPane buscaPane;
+    
+    @FXML
     private ImageView bimg2;
     @FXML
     private Text bf2;
@@ -108,6 +114,8 @@ public class UserScreenController implements Initializable {
     
 	private static Usuario user = null;
 	private Iterator<Filme> i;
+	private ListIterator<Filme> ifilmes = null;
+	
 	
 	public void buildUserScreen(Usuario user1) throws IOException {
 		user = user1;
@@ -132,7 +140,7 @@ public class UserScreenController implements Initializable {
 		break;
 		
 		case "btBuscar" :
-			ativo.setVisible(false);
+			showFilmes();
 		break;
 		}
 	}
@@ -257,11 +265,56 @@ public class UserScreenController implements Initializable {
 	}
 	
 	public void proxBusca() {
-		
+		if(ifilmes.hasNext()) {
+			Filme filme = (Filme)ifilmes.next();
+			Image img = new Image(img(filme));
+			bimg1.setImage(img);
+			bf1.setText(filme.getNome());
+			if(ifilmes.hasNext()) {
+				Filme filme2 = (Filme)ifilmes.next();
+				Image img2 = new Image(img(filme2));
+				bimg2.setImage(img2);
+				bf2.setText(filme2.getNome());
+			}
+			else { 
+				bimg2.setImage(null);
+				bf2.setText("");
+			}
+		}
+		else {
+			showFilmes();
+		}
 	}
 	
 	public void prevBusca() {
+		if(ifilmes.previousIndex()- 3 >= 0) {
+			Filme filme = null;
+			Filme filme2 = null;
+			for(int i = 0; i < 3; i++) {
+				filme2 = ifilmes.previous();
+			}
+			filme = ifilmes.previous();
+			Image img = new Image(img(filme));
+			bimg1.setImage(img);
+			bf1.setText(filme.getNome());
+			
+			Image img2 = new Image(img(filme2));
+			bimg2.setImage(img2);
+			bf2.setText(filme2.getNome());
+			proxBusca();
+		}
 		
+	}
+	public void showFilmes(){
+		ativo.setVisible(false);
+		ativo = buscaPane;
+		ativo.setVisible(true);
+		ArrayList<Filme> f = new ArrayList<Filme>();
+		for(Map.Entry<Integer, Filme> entry :  App.db.filmeRep.loadFilmeRep().entrySet()) {
+			f.add(entry.getValue());
+		}
+		ifilmes = f.listIterator();
+		proxBusca();
 	}
 	public void nextFav() {
 			if(i.hasNext()) {
