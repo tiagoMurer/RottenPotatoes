@@ -247,7 +247,25 @@ public class UserScreenController implements Initializable {
 	}
 	
 	public void nextFav() {
-		
+			if(i.hasNext()) {
+				Filme filme = (Filme)i.next();
+				Image img = new Image(img(filme));
+				img1.setImage(img);
+				f1.setText(filme.getNome());
+				if(i.hasNext()) {
+					Filme filme2 = (Filme)i.next();
+					Image img1 = new Image(img(filme2));
+					img2.setImage(img1);
+					f2.setText(filme2.getNome());
+				}
+				else {
+					img2.setImage(null);;
+					f2.setText("");
+				}
+			}
+		else {
+			atualizarFavoritosPane();
+		}
 	}
 	
 	public String img(Filme filme) {
