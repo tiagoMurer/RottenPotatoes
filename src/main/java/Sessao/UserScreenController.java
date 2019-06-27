@@ -92,6 +92,16 @@ public class UserScreenController implements Initializable {
     @FXML
     private Text msg;
     
+    //Busca Pane
+    @FXML
+    private ImageView bimg2;
+    @FXML
+    private Text bf2;
+    @FXML
+    private ImageView bimg1;
+    @FXML
+    private Text bf1;
+    
     
     
 	private AnchorPane ativo; 
@@ -246,6 +256,13 @@ public class UserScreenController implements Initializable {
 		}
 	}
 	
+	public void proxBusca() {
+		
+	}
+	
+	public void prevBusca() {
+		
+	}
 	public void nextFav() {
 			if(i.hasNext()) {
 				Filme filme = (Filme)i.next();
