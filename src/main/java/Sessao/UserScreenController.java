@@ -2,8 +2,12 @@ package Sessao;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
+import Entidades.Filme;
 import Entidades.Perfil;
 import Entidades.Usuario;
 import Rotten.App;
@@ -13,6 +17,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import com.jfoenix.controls.JFXButton;
@@ -71,11 +77,27 @@ public class UserScreenController implements Initializable {
     private JFXButton btMudarSenha;
     @FXML
     private JFXButton btExcluir;
-    // FIM PANE DE PERFIL
 
+    //COMEÇO FAVORITOS PANE
+    @FXML
+    private AnchorPane filmesPane;
+    @FXML
+    private ImageView img1;
+    @FXML
+    private Text f1;
+    @FXML
+    private ImageView img2;
+    @FXML
+    private Text f2;
+    @FXML
+    private Text msg;
+    
+    
+    
 	private AnchorPane ativo; 
     
 	private static Usuario user = null;
+	private Iterator<Filme> i;
 	
 	public void buildUserScreen(Usuario user1) throws IOException {
 		user = user1;
@@ -96,7 +118,7 @@ public class UserScreenController implements Initializable {
 		break;
 		
 		case "btFavoritos" :
-			ativo.setVisible(false);
+			atualizarFavoritosPane();
 		break;
 		
 		case "btBuscar" :
@@ -198,6 +220,35 @@ public class UserScreenController implements Initializable {
 		perfilEmail.setText(user.getEmail());
 		this.userName.setText(""+user.getPerfil().getName()+" "+user.getPerfil().getSobrenome());
 		
+	}
+	
+	public void atualizarFavoritosPane() {
+		ativo.setVisible(false);
+		ativo = filmesPane;
+		ativo.setVisible(true);
+		int contFilme = 0;
+		if(user.getPerfil().getFilmesFavoritos().size() > 0) {
+			i = user.getPerfil().getFilmesFavoritos().iterator();
+			if(i.hasNext()) {
+				Filme filme = (Filme)i.next();
+				Image img = new Image(img(filme));
+				img1.setImage(img);
+				f1.setText(filme.getNome());
+				if(i.hasNext()) {
+					Filme filme2 = (Filme)i.next();
+					Image img2 = new Image(img(filme2));
+					img1.setImage(img2);
+					f1.setText(filme.getNome());
+				}
+			}
+		}
+		else {
+			msg.setText("Você ainda não tem nenhum");
+		}
+	}
+	
+	public String img(Filme filme) {
+		return App.db.filmeImg.getUrl(App.db.filmeRep.getId(filme));
 	}
 	
 	@Override

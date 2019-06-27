@@ -1,8 +1,5 @@
 package Entidades;
 
-
-import java.util.HashSet;
-
 public class Filme {
     //VARI�VEIS
 

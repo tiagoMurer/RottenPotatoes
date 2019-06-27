@@ -71,6 +71,9 @@ public class FilmeRep implements Repository<Object> {
 		}
 	}
 	
+	public void updateFns(int i) {
+		
+	}
 	
 	public HashMap<Integer, Filme> loadFilmeRep() {
 		HashMap<Integer, Filme> filmes = new HashMap<>();
@@ -97,6 +100,17 @@ public class FilmeRep implements Repository<Object> {
 			System.out.println("Exception Em FilmerepLoad " + e);
 			return null;
 		}
+	}
+	
+	public int getId(Filme filme) {
+		HashMap<Integer, Filme> filmes = loadFilmeRep();
+
+		for(Map.Entry<Integer, Filme> entry : filmes.entrySet()) {
+			if(entry.getValue().equals(filme)) {
+				return entry.getKey();
+			}
+		}
+		return 0;
 	}
 
 	public Filme getFilmesById(int id) {

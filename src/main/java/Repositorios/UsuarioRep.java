@@ -133,7 +133,6 @@ public class UsuarioRep implements Repository<Object>{
 			}
 			
 		}	catch(SQLException e) {
-			System.out.println("Exceção em validar login " + e);
 			return null;
 		}
 	}

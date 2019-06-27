@@ -1,11 +1,11 @@
 package Entidades;
 
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashSet;
 import java.util.Map.Entry;
 
 import Rotten.App;
+
 
 
 public class Perfil {
@@ -15,15 +15,16 @@ public class Perfil {
     private int age; //tirar idade de birthday
     private int id_perfil;
     private HashMap<Integer, Perfil> contatos;
-    private HashMap<Integer, Filme> filmesFavoritos;
+    private LinkedHashSet<Filme> filmesFavoritos;
 
-    public Perfil(String name, String sobrenome, int id_perfil){
+ 
+	public Perfil(String name, String sobrenome, int id_perfil){
         this.name = name;
         this.setSobrenome(sobrenome);
         this.setId_perfil(id_perfil);
-        this.filmesFavoritos = new HashMap<Integer, Filme>();
-        this.contatos = new HashMap<Integer, Perfil>();
         this.id_user = id_perfil;
+        this.contatos = new HashMap<Integer, Perfil>();
+        this.filmesFavoritos = App.db.filmesFav.loadFilmesFav(id_user);
     }
 
     //gestão de contatos e filmes
@@ -41,10 +42,13 @@ public class Perfil {
 
     public void favoritarFilme(Filme filme){
     	//TODO
-    	// filmesFavoritos.add(filme);
-        int numFans = filme.getNumeroFans();
-        filme.setNumeroFans(numFans + 1);
-        //database.update (implementar)
+    	if(filmesFavoritos.contains(filme))
+    		return;
+    	else {
+    		int numFans = filme.getNumeroFans();
+    		filme.setNumeroFans(numFans + 1);
+    		App.db.filmesFav.add(filme);
+    	}
     }
     public void desfavoritarFilme(Filme filme){
         filmesFavoritos.remove(filme);
@@ -66,7 +70,11 @@ public class Perfil {
 	}
     //getters+setters
 
+	public LinkedHashSet<Filme> getFilmesFavoritos() {
+			return filmesFavoritos;
+	}
 
+	
     public int getIdUser() {
         return id_user;
     }

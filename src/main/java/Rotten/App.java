@@ -32,7 +32,7 @@ public class App extends Application{
 	
 	public static void main(String[] args) throws Exception {
 		db = Database.runDb();
-        launch(args);
+		launch(args);
        
        
         // ADICIONAR REPOSITÓRIO DE PERFIL, E COLOCAR PRA QUANDO DELETER USUARIO DELETAR PERFIL

@@ -11,6 +11,8 @@ public class Database {
 	public FilmeRep filmeRep = null;
 	public UsuarioRep usuarioRep = null;
 	public PerfilRep perfilRep = null;
+	public FilmesFav filmesFav = null;
+	public FilmesImg filmeImg = null;
 	
 	public void connectDb() throws Exception{
 
@@ -41,6 +43,8 @@ public class Database {
 			db.filmeRep = new FilmeRep();
 			db.usuarioRep = new UsuarioRep();
 			db.perfilRep = new PerfilRep();
+			db.filmesFav = new FilmesFav();
+			db.filmeImg = new FilmesImg();
 			return db;
 		}	catch(SQLException e) {
 			e.printStackTrace();

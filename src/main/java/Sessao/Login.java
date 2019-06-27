@@ -76,6 +76,8 @@ public class Login {
     		UserScreenController uc = new UserScreenController();
     		uc.buildUserScreen(user);
     	}
+    	else
+    		welcome.setText("Dados Inválidos");
     }
     
     public void cadastrar(){
