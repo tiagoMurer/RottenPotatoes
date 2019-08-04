@@ -1,2 +1,5 @@
-## Atenção:
-A última versão está na Branch Final
+
+# Rede Social de Filmes
+# Projeto JDBC
+# Terceiro Semestre IFSP
+
